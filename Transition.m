@@ -7,7 +7,7 @@
 //
 
 #import "Transition.h"
-#import "ViewController.h"
+#import "CollectionViewController.h"
 #import "DetailViewController.h"
 @implementation Transition
 - (instancetype)initWithTransitionType:(TransitionType)type {
@@ -21,7 +21,7 @@
 }
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
     if (type_ == PUSH) {
-        ViewController *fromVC = (ViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+        CollectionViewController *fromVC = (CollectionViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
         DetailViewController *toVC = (DetailViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
         //拿到当前点击的cell的imageView
         UICollectionViewCell *cell = [fromVC.collectionView cellForItemAtIndexPath:fromVC.currentIndexPath];
@@ -48,7 +48,7 @@
         }];
     } else {
         DetailViewController *fromVC = (DetailViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-        ViewController *toVC = (ViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+        CollectionViewController *toVC = (CollectionViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
         UICollectionViewCell *cell = [toVC.collectionView cellForItemAtIndexPath:toVC.currentIndexPath];
         UIView *containerView = [transitionContext containerView];
         //这里的lastView就是push时候初始化的那个tempView
